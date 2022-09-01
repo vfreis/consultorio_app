@@ -1,9 +1,8 @@
 # teste library
 import pyodbc 
+import pandas as pd
 
 # engine = create_engine('sqlite:///clientes.db', echo = True)
-
-
 
 ## infos do banco
 server = 'consultorio-app-alpha.ciofokjqok2t.us-east-1.rds.amazonaws.com'
@@ -19,3 +18,10 @@ try:
     print('conectado com ' + database)
 except: 
         print('não foi possivel conectar')
+
+
+def select_basico():
+    sql = "SELECT * FROM [clientes] "
+    cursor.execute(sql)
+    for r in cursor:
+        print(r)
