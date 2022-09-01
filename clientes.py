@@ -1,20 +1,23 @@
+# teste library
+import pymssql
+import pyodbc 
+from os import getenv
+import pymssql
 from sqlalchemy import create_engine, insert
 from sqlalchemy.sql import text
 
-engine = create_engine('sqlite:///clientes.db', echo = True)
+# engine = create_engine('sqlite:///clientes.db', echo = True)
 
 
 ## infos do banco
-endpoint = 'consultorio-app-alpha.ciofokjqok2t.us-east-1.rds.amazonaws.com'
+server = 'consultorio-app-alpha.ciofokjqok2t.us-east-1.rds.amazonaws.com'
 porta = 1433
-nome_db = 'dbo.clientes'
-
-
+database = 'consulta_app_alpha'
+username = 'admin'
+password = '123456789'
 
 
 ## devera ser alterado para um usuário apenas para o servidor
-usuario = 'admin'
-senha = '123456789'
 
 
 # def adicionar_cliente(name,	birth,	gender,	mail,	phone,	password,	ss_number,	stat):
@@ -35,14 +38,14 @@ senha = '123456789'
 #         )
 #         return rs
 
-def adicionar_cliente(nome_1, cpf):
-    with engine.connect() as con:
+# def adicionar_cliente(nome_1, cpf):
+#     with engine.connect() as con:
 
 
 
-def retorna_clientes():
-    with engine.connect() as con:
-        statement = text("""SELECT * FROM clientes""")
-        rs = con.execute(statement)
-        clientes = rs.fetchall()
-        return clientes
+# def retorna_clientes():
+#     with engine.connect() as con:
+#         statement = text("""SELECT * FROM clientes""")
+#         rs = con.execute(statement)
+#         clientes = rs.fetchall()
+#         return clientes
