@@ -20,14 +20,10 @@ password = '123456789'
 
 
 # setup connection
-cnxn = pyodbc.connect('DRIVER={SQL Server};SERVER='+server+';DATABASE='+database+';UID='+username+';PWD='+ password)
-cursor = cnxn.cursor()
 
-
-#teste
-def select_basico():
-    consulta_teste = cnxn.execute('SELECT * FROM CLIENTES')
-    for row in cursor:
-        print(row)
-
-select_basico()
+try:
+    cnxn = pyodbc.connect('DRIVER={SQL Server};SERVER='+server+';DATABASE='+database+';UID='+username+';PWD='+ password)
+    cursor = cnxn.cursor()
+    print('conectado com ' + database)
+except: 
+        print('não foi possivel conectar')
