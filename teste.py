@@ -35,13 +35,19 @@ def select_todos_clientes():
 
 
 def insert_cliente(status, nome, dt_nasc, email, celular, telefone, sexo, cpf):
-    # sql = f'''insert into clientes (status, nome, dt_nasc, email, celular, telefone, sexo, cpf) values({status} , {nome}, {dt_nasc}, {email}, {celular}, {telefone}, {sexo}, {cpf} )'''
-    sql = '''insert into clientes (status, nome, dt_nasc, email, celular, telefone, sexo, cpf) values( 'true', 'william', '01/01/1989', 'willdavila@bla.com.br', '1199999999', '1100000000', '?', '0000000001')'''
+    sql = f'''insert into clientes (status, nome, dt_nasc, email, celular, telefone, sexo, cpf) values('{status}' , '{nome}', '{dt_nasc}', '{email}', '{celular}', '{telefone}', '{sexo}', '{cpf}' )'''
+    # sql = '''insert into clientes (status, nome, dt_nasc, email, celular, telefone, sexo, cpf) values( 'true', 'william', '01/01/1989', 'willdavila@bla.com.br', '1199999999', '1100000000', '?', '0000000001')'''
     cursor.execute(sql)
     cnxn.commit()
     print(f'cliente {nome} adicionado com sucesso')
 
-insert_cliente('true', 'william2', '01/01/1989', 'willdavila@bla.com.br'," 1199999999", "1100000000", '?', "0000000001")
+# insert_cliente('true', 'william2', '01/01/1989', 'willdavila@bla.com.br'," 1199999999", "1100000000", '?', "0000000001")
 
 # insert_teste = '''insert into clientes (status, nome, dt_nasc, email, celular, telefone, sexo, cpf) values( 'true', 'william', '01/01/1989', 'willdavila@bla.com.br', '1199999999', '1100000000', '?', '0000000001')'''
 
+# def teste_insert(status, nome, dt_nasc, email, celular, telefone, sexo, cpf):
+#     sql = f'''insert into clientes (status, nome, dt_nasc, email, celular, telefone, sexo, cpf) values('{status}' , '{nome}', '{dt_nasc}', '{email}', '{celular}', '{telefone}', '{sexo}', '{cpf}' )'''
+#     # sql = '''insert into clientes (status, nome, dt_nasc, email, celular, telefone, sexo, cpf) values( 'true', 'william', '01/01/1989', 'willdavila@bla.com.br', '1199999999', '1100000000', '?', '0000000001')'''
+#     print(sql)
+
+insert_cliente('true', 'william3', '01/01/1989', 'willdavila@bla.com.br'," 1199999999", "1100000000", '?', "0000000001")
