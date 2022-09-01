@@ -3,8 +3,18 @@ from sqlalchemy.sql import text
 
 engine = create_engine('sqlite:///clientes.db', echo = True)
 
+
+## infos do banco
 endpoint = 'consultorio-app-alpha.ciofokjqok2t.us-east-1.rds.amazonaws.com'
 porta = 1433
+nome_db = 'dbo.clientes'
+
+
+
+
+## devera ser alterado para um usuário apenas para o servidor
+usuario = 'admin'
+senha = '123456789'
 
 
 # def adicionar_cliente(name,	birth,	gender,	mail,	phone,	password,	ss_number,	stat):
@@ -27,10 +37,7 @@ porta = 1433
 
 def adicionar_cliente(nome_1, cpf):
     with engine.connect() as con:
-        stmt    = (
-            insert(clientes).
-            values(nome = nome = )
-        )
+
 
 
 def retorna_clientes():
