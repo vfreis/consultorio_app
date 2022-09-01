@@ -1,5 +1,6 @@
 # teste library
 import pyodbc
+import jsonify
 # engine = create_engine('sqlite:///clientes.db', echo = True)
 
 ## infos do banco
@@ -22,15 +23,16 @@ def select_cliente_id(id):
         cursor.execute(sql)
         for r in cursor:
             print(r) # para teste apenas
-            return(r)
+            return jsonify(r)
     except:
         return('N/D')
 
 def select_todos_clientes():
-    sql = "SELECT * FROM [clientes]"
-    cursor.execute(sql)
-    for r in cursor:
-        return(r)
+    cursor.execute("SELECT * FROM CLIENTES;") 
+    row = cursor.fetchone() 
+    while row: 
+        row = cursor.fetchone()
+        print(row)
 
 
 
@@ -42,3 +44,7 @@ def insert_cliente(status, nome, dt_nasc, email, celular, telefone, sexo, cpf):
     print(f'cliente {nome} adicionado com sucesso')
 
 # insert_cliente('true', 'william3', '01/01/1989', 'willdavila@bla.com.br'," 1199999999", "1100000000", '?', "0000000001") # teste
+
+select_todos_clientes() # seleciona todos os clientes
+
+select_cliente_id(1)
