@@ -3,6 +3,10 @@ from sqlalchemy.sql import text
 
 engine = create_engine('sqlite:///clientes.db', echo = True)
 
+endpoint = 'consultorio-app-alpha.ciofokjqok2t.us-east-1.rds.amazonaws.com'
+porta = 1433
+
+
 # def adicionar_cliente(name,	birth,	gender,	mail,	phone,	password,	ss_number,	stat):
 #     with engine.connect() as con:
 #         statement = text("""INSERT INTO 
@@ -21,12 +25,12 @@ engine = create_engine('sqlite:///clientes.db', echo = True)
 #         )
 #         return rs
 
-# def adicionar_cliente(nome_1, cpf):
-#     with engine.connect() as con:
-#         stmt    = (
-#             insert(clientes).
-#             values(nome = nome = )
-#         )
+def adicionar_cliente(nome_1, cpf):
+    with engine.connect() as con:
+        stmt    = (
+            insert(clientes).
+            values(nome = nome = )
+        )
 
 
 def retorna_clientes():
