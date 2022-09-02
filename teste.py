@@ -28,8 +28,9 @@ def paciente_por_id(id):
     results = []
     for row in cursor.fetchall(): 
         results.append(dict(zip(columns, row)))
-    jsonobj = json.dumps(results, indent=4, sort_keys=False)
-    print(jsonobj) # apenas para teste
+    jsonstr = json.dumps(results, indent=4, sort_keys=False)
+    jsonobj = json.loads(jsonstr)
+    # print(jsonobj) # apenas para teste
     return jsonobj
 
 def paciente_por_cpf(cpf):
@@ -38,8 +39,9 @@ def paciente_por_cpf(cpf):
     results = []
     for row in cursor.fetchall(): 
         results.append(dict(zip(columns, row)))
-    jsonobj = json.dumps(results, indent=4, sort_keys=True, default=str)
-    print(jsonobj) # apenas para teste
+    jsonstr = json.dumps(results, indent=4, sort_keys=False)
+    jsonobj = json.loads(jsonstr)
+    # print(jsonobj) # apenas para teste
     return jsonobj
 
 def select_todos_pacientes():
@@ -48,8 +50,9 @@ def select_todos_pacientes():
     results = []
     for row in cursor.fetchall():
         results.append(dict(zip(columns, row)))
-    jsonobj = json.dumps(results, indent=4, sort_keys=True, default=str)
-    print(jsonobj) # apenas para teste
+    jsonstr = json.dumps(results, indent=4, sort_keys=False)
+    jsonobj = json.loads(jsonstr)
+    # print(jsonobj) # apenas para teste
     return jsonobj
 
 def inserir_paciente(status, nome, dt_nasc, email, celular, telefone, sexo, cpf):
@@ -74,4 +77,7 @@ def deletar_paciente(id):
 
 # delete_cliente(4)
 
-paciente_por_id(1)
+temp = paciente_por_id(1)
+
+print(temp[0]['cpf'])
+
