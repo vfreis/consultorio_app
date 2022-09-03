@@ -1,15 +1,14 @@
+# bibliotecas
 import pyodbc
+from datetime import date
 
 # para conversão e visualização de consultas
 import json
 
-from datetime import date
-
-
 #variaveis de ambiente
 from env_var import env_var
 
-## variaveis de ambiente
+## requisita as variaveis de ambiente
 server = env_var['server']
 porta = env_var['porta']
 database = env_var['database']
@@ -44,11 +43,11 @@ def paciente_por_cpf(cpf):
     # print(jsonobj) # apenas para teste
     return jsonobj
 
-def select_todos_pacientes():
-    query = cursor.execute("SELECT * FROM pacientes WHERE status = 'True'")
+def selecionar_todos_pacientes():
+    query = cursor.execute(f"SELECT * FROM pacientes WHERE STATUS = 'True'")
     columns = [column[0] for column in cursor.description]
     results = []
-    for row in cursor.fetchall():
+    for row in cursor.fetchall(): 
         results.append(dict(zip(columns, row)))
     jsonstr = json.dumps(results, indent=4, sort_keys=False)
     jsonobj = json.loads(jsonstr)
@@ -60,24 +59,34 @@ def inserir_paciente(status, nome, dt_nasc, email, celular, telefone, sexo, cpf)
     sql = f'''insert into pacientes (status, nome, dt_nasc, email, celular, telefone, sexo, cpf, data_criacao) values('{status}' , '{nome}', '{dt_nasc}', '{email}', '{celular}', '{telefone}', '{sexo}', '{cpf}', '{timestamp}')'''
     cursor.execute(sql)
     cnxn.commit()
+    temp = paciente_por_cpf(cpf)
     print(f'cliente {nome} adicionado com sucesso')
-    print(paciente_por_id(id))
+    return(paciente_por_cpf(cpf))
 
-def deletar_paciente(id):
-    sql = f'''UPDATE pacientes SET Status = 'False' WHERE ID =  {id}'''
+def deletar_paciente(cpf):
+    sql = f'''UPDATE pacientes SET Status = 'False' WHERE CPF =  {cpf}'''
     cursor.execute(sql)
     cnxn.commit()
-    print(paciente_por_id(id))
+    return(paciente_por_cpf(cpf))
 
-# insert_cliente('true', 'tiuzin', '24/24/1989', 'willdavila@bla.com.br', " 1199999999", "1100000000", '?', "0000000001") # não sabemos pq nao funciona
+def altera_paciente(campo, alteracao, cpf):
+    sql = f'''UPDATE pacientes SET {campo} = '{alteracao}' WHERE CPF =  {cpf}'''
+    cursor.execute(sql)
+    cnxn.commit()
+    return(paciente_por_cpf(cpf))
 
-# inserir_paciente('true', 'tiuzin', '01/01/1989', 'willdavila@bla.com.br'," 1199999999", "1100000000", '?', "0000000001")
+print(altera_paciente('nome', 'vira vira vira teu', '0000000005'))
 
-# select_todos_clientes() # seleciona todos os clientes
 
-# delete_cliente(4)
+# inserir_paciente('true', 'danial do mario', '01/01/1989', 'willdavila@bla.com.br'," 1199999999", "1100000000", '?', "0000000005")
 
-temp = paciente_por_id(1)
+# print(selecionar_todos_pacientes()) # seleciona todos os clientes
 
-print(temp[0]['cpf'])
+# print(paciente_por_cpf('0000000001'))
+
+deletar_paciente('0000000005')
+
+# temp = paciente_por_id(1)
+
+# print(temp[0]['cpf'])
 
