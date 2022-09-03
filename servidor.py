@@ -20,8 +20,8 @@ def cadastrarWeb():
     telefone = request.form['telefone']
     sexo = request.form['sexo']
     cpf = request.form['cpf']
-    novoPaciente = Metodos()
-    novoPaciente.inserir_paciente(nome, dt_nasc, email, celular, telefone, sexo, cpf)
+    novoPaciente = Metodos(nome, dt_nasc, email, celular, telefone, sexo, cpf)
+    novoPaciente.inserir_paciente()
     return novoPaciente.paciente_por_cpf(cpf)
 
 if __name__ == "__main__":
