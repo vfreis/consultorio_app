@@ -8,7 +8,7 @@ import json
 #variaveis de ambiente
 from env_var import env_var
 
-## requisita as variaveis de ambiente
+## atribue as variaveis de ambiente
 server = env_var['server']
 porta = env_var['porta']
 database = env_var['database']
@@ -84,7 +84,7 @@ print(altera_paciente('nome', 'vira vira vira teu', '0000000005'))
 
 # print(paciente_por_cpf('0000000001'))
 
-deletar_paciente('0000000005')
+# deletar_paciente('0000000005')
 
 # temp = paciente_por_id(1)
 
