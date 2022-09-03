@@ -24,8 +24,14 @@ print('conectado com ' + database)
 
 class Metodos:
 
-    def __init__(self, n):
-        self.n = n       
+    def __init__(self, nome, dt_nasc, email, celular, telefone, sexo, cpf):
+        self.nome = nome
+        self.data_nasc = dt_nasc
+        self.email = email
+        self.celular = celular
+        self.telefone = telefone
+        self.sexo = sexo
+        self.cpf = cpf
 
     def paciente_por_id(id):
         query = cursor.execute(f"SELECT * FROM pacientes WHERE id = {id}")

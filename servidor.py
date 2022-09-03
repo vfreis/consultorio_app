@@ -11,18 +11,18 @@ app = Flask(__name__)
 def init():
     return render_template('index.html')
 
-@app.route('/cadastro', methods = ['POST', 'GET'])
+@app.route('/cadastro', methods = ['POST', 'GET',])
 def cadastrarWeb():
-    valorNome = request.form['usuario']
-    valorDataNasc = request.form['data_nascimento']
-    valorEmail = request.form['email']
-    valorCelular = request.form['celular']
-    valorTelefone = request.form['telefone']
-    valorSexo = request.form['sexo']
-    valorCPF = request.form['cpf']
+    nome = request.form['usuario']
+    dt_nasc = request.form['data_nascimento']
+    email = request.form['email']
+    celular = request.form['celular']
+    telefone = request.form['telefone']
+    sexo = request.form['sexo']
+    cpf = request.form['cpf']
     novoPaciente = Metodos()
-    novoPaciente.inserir_paciente(valorNome, valorDataNasc, valorEmail, valorCelular, valorTelefone, valorSexo, valorCPF)
-    return novoPaciente.paciente_por_cpf(valorCPF)
+    novoPaciente.inserir_paciente(nome, dt_nasc, email, celular, telefone, sexo, cpf)
+    return novoPaciente.paciente_por_cpf(cpf)
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5002))
