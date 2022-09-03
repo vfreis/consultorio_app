@@ -15,12 +15,27 @@
 <body>
     <div class="container">
         <form action="" method="POST">
-            <label for="fname" type="text">Digite seu nome:</label>
+            <label for="fname" type="text">Digite seu nome:</label><br>
             <input type="text" name="usuario" required autofocus><br>
-            <label for="">Data de Nascimento:</label>
-            <input type="date" name="data_nascimento"><br>
-            <label>Digite sua senha:</label>
-            <input type="password" name="senha" required>
+            <label for="">Data de Nascimento:</label><br>
+            <input type="date" name="data_nascimento" required><br>
+            <label for="">Digite seu email:</label><br>
+            <input type="email" name="email" required><br>
+            <label for="">Digite seu celular:</label><br>
+            <input type="fone" name="celular" required><br>
+            <label for="">Digite seu telefone:</label><br>
+            <input type="fone" name="telefone"><br>
+            <label for="">Sexo:</label><br>
+            <input type="radio" name="sexo" value="Masculino">
+            <label for="sexo-m">Masculino</label>
+            <input type="radio" id="sexo-f" name="sexo" value="Feminino">
+            <label for="sexo-f">Feminino</label><br>
+            <label for="">Digite seu CPF:</label><br>
+            <input type="text" name="cpf" required><br>
+            <input type="submit" value="Enviar">
+
+
+            
         </form>
 
     </div>
