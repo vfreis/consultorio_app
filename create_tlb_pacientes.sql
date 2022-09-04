@@ -9,6 +9,7 @@ create table pacientes (
 	telefone varchar(50),
 	sexo varchar(50) not null,
 	cpf varchar(50) primary key not null,
+	senha varchar(50) not null
 	data_criacao date,
 
 )
