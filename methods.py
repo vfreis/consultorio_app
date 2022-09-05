@@ -61,3 +61,6 @@ class Conexao_DB():
     def selecionar_todos_agentes(agente):
         consulta = f'''SELECT * FROM {agente}'''
         Conexao_DB.realizar_consulta(consulta)
+
+
+# print(Conexao_DB.inserir_agente('willzito', '01/01/1989', 'gabidavila@bla.com.br'," 1199999999", "1100000000", 'f', "0000000020", "senha", 'pacientes'))
