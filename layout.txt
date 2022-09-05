@@ -1,0 +1,5 @@
+- home nao fizemos
+- cadastro ok
+- login ok
+- consulta 
+- agendamento

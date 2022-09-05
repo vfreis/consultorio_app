@@ -1,26 +1,21 @@
-#bibliotecas
-import os
-from flask import Flask, render_template, request, url_for
+from flask import render_template, request, Blueprint
 from methods import Conexao_DB
 from datetime import datetime
 
-app = Flask(__name__)
-
-
-# #tratativa de exceções
-# class ErrCnn(Exception):
-#     pass
+views = Blueprint(__name__, 'views')
 
 class Abort(Exception):
     pass
 
-#rota da home
-@app.route('/')
-def init():
+@views.route('/')
+def home():
     return render_template('index.html')
 
-#rota cadastrar
-@app.route('/cadastrar', methods = ['POST', 'GET'])
+@views.route('/cadastro')
+def cadastro():
+    return render_template('cadastro.html')
+
+@views.route('/cadastrar', methods = ['POST', 'GET'])
 def cadastrarAgente():
     nome = request.form['nome']
     dt_nasc = request.form['dt_nasc']
@@ -39,16 +34,3 @@ def cadastrarAgente():
 
     return Conexao_DB.inserir_agente(nome, dt_nasc_date, email, celular, telefone, sexo, cpf, senha, agente = 'pacientes')
     
-
-if __name__ == '__main__':
-    porta = int(os.environ.get('PORT', 5002))
-    app.run(host= 'localhost', port = porta, debug=True)
-    
-
-
-
-
-
-
-# print(Conexao_DB.inserir_agente('amanda', '01/01/1989', 'gabidavila@bla.com.br'," 1199999999", "1100000000", 'f', "0000000012", "senha", 'pacientes'))
-# print(Conexao_DB.selecionar_paciente_cpf('0000000009'))
