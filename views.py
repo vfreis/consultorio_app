@@ -7,13 +7,15 @@ views = Blueprint(__name__, 'views')
 class Abort(Exception):
     pass
 
+@views.route('/views')
 @views.route('/')
 def home():
-    return render_template('index.html')
+    return render_template('cadastro.html')
 
-@views.route('/cadastro')
+@views.route('/cadastrar')
 def cadastro():
     return render_template('cadastro.html')
+
 
 @views.route('/cadastrar', methods = ['POST', 'GET'])
 def cadastrarAgente():

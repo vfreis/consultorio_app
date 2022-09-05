@@ -13,10 +13,8 @@
     <title>Consultorio App | Cadastrar</title>
 </head>
 <body>
-    {% extends 'index.html'}
-    {% block content %}
     
-    <form action="/cadastrar" method="POST">
+    <form action="/views/cadastrar" method="POST">
         <div class="input-group mb-3">
             <span class="input-group-text">Nome</span>
             <input id="nome" name = "nome"type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
@@ -51,8 +49,6 @@
         </div>
         <button  type="submit" class="btn btn-primary botaologin">Cadastrar</button>
     </form>
-
-    {% endblock %}
 
 </body>
 </html>

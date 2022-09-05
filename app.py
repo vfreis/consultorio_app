@@ -1,11 +1,11 @@
 #bibliotecas
 import os
-from flask import Flask, render_template
+from flask import Flask
 from views import views
 
 
 app = Flask(__name__)
-app.register_blueprint(views, url_prefix = '/')
+app.register_blueprint(views, url_prefix = '/views')
 
 # #tratativa de exceções
 # class ErrCnn(Exception):
