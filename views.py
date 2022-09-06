@@ -1,5 +1,4 @@
 #bibliotecas
-from crypt import methods
 from flask import render_template, request, Blueprint
 from flask_login import LoginManager
 from methods import Conexao_DB
