@@ -53,7 +53,7 @@ class Conexao_DB():
         cnn.commit()
         return Conexao_DB.selecionar_agente_cpf(cpf, agente)[0]['nome'] + ' adicionado'
 
-    def selecionar_agente_cpf(cpf, agente):
+    def selecionar_agente_cpf(cpf, agente = 'pacientes'):
         consulta = f'''SELECT * FROM {agente} WHERE CPF = {cpf}'''
         resultado = Conexao_DB.realizar_consulta(consulta)
         return resultado
