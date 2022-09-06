@@ -1,8 +1,9 @@
-from flask import render_template, request, Blueprint
+from flask import render_template, request, Blueprint, session
 from methods import Conexao_DB
 from datetime import datetime
 
 views = Blueprint(__name__, 'views')
+
 
 class Abort(Exception):
     pass

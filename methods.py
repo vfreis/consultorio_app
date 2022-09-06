@@ -62,5 +62,17 @@ class Conexao_DB():
         consulta = f'''SELECT * FROM {agente}'''
         Conexao_DB.realizar_consulta(consulta)
 
+    def autenticar_usuario(email, senha, agente = 'pacientes'):
+        consulta = f'''SELECT email, senha FROM {agente} WHERE email = '{email}' AND senha = '{senha}' '''
+        resposta = Conexao_DB.realizar_consulta(consulta)
+        if resposta and email == resposta[0]['email'] and senha == resposta[0]['senha']:
+            return True
+        else:
+            return False
 
+
+# testes
+# print(Conexao_DB.autenticar_usuario('testes@teste', 'teste'))
+# consulta = '''select * from pacientes where email = 'testes@teste' '''
+# Conexao_DB.realizar_consulta(consulta)
 # print(Conexao_DB.inserir_agente('willzito', '01/01/1989', 'gabidavila@bla.com.br'," 1199999999", "1100000000", 'f', "0000000020", "senha", 'pacientes'))
