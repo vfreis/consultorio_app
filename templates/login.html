@@ -15,8 +15,8 @@
 <body>
     {% extends 'index.html' %}
     {% block content %}
-
-    <div class="card text-bg-light mb-3" style="max-width: 18rem;">
+    <form action="login" method="post">
+      <div class="card text-bg-light mb-3" style="max-width: 18rem;">
         <div class="card-header">Login</div>
         <div class="input-group flex-nowrap">
             <span class="input-group-text" id="addon-wrapping">Email</span>
@@ -27,8 +27,12 @@
             <input name ="senha" id="senha"type="text" class="form-control" placeholder="Email" aria-label="Username" aria-describedby="addon-wrapping">
           </div>
         <div class="card-body">
+          <button  type="submit" class="btn btn-primary botaologin">Login</button>
         </div>
-
+    </form>
     {% endblock %}
+    {% if usuario %}
+    Olá, {usuario}
+    {% endif %}
 </body>
 </html>

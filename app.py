@@ -7,13 +7,10 @@ from views import views
 app = Flask(__name__)
 app.register_blueprint(views, url_prefix = '/')
 
-    
 #seta configurações do flask
 if __name__ == '__main__':
     porta = int(os.environ.get('PORT', 5002))
     app.run(host= 'localhost', port = porta, debug=True)
-
-
 
 #validações
 # return Conexao_DB.inserir_agente(nome, dt_nasc_date, email, celular, telefone, sexo, cpf, senha, agente = 'pacientes')

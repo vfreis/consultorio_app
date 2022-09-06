@@ -57,6 +57,11 @@ class Conexao_DB():
         consulta = f'''SELECT * FROM {agente} WHERE CPF = {cpf}'''
         resultado = Conexao_DB.realizar_consulta(consulta)
         return resultado
+    
+    def selecionar_agente_email(email, agente = 'pacientes'):
+        consulta = f'''SELECT * FROM {agente} WHERE email = '{email}' '''
+        resultado = Conexao_DB.realizar_consulta(consulta)
+        return resultado[0]
 
     def selecionar_todos_agentes(agente):
         consulta = f'''SELECT * FROM {agente}'''
@@ -69,7 +74,6 @@ class Conexao_DB():
             return True
         else:
             return False
-
 
 # testes
 # print(Conexao_DB.autenticar_usuario('testes@teste', 'teste'))
