@@ -37,4 +37,7 @@ def cadastrarAgente():
         return Conexao_DB.inserir_agente(nome, dt_nasc_date, email, celular, telefone, sexo, cpf, senha, agente = 'pacientes')
     else:
         return render_template('cadastro.html')
-        
+
+@views.route('/login')
+def login():
+    return render_template('login.html')
