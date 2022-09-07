@@ -6,6 +6,9 @@ from views import views
 #declara flask e blueprint
 app = Flask(__name__)
 app.register_blueprint(views, url_prefix = '/')
+app.config.from_object(__name__)
+app.config['SESSION_TYPE'] = 'memcached'
+app.config['SECRET_KEY'] = 'super secret key'
 
 #seta configurações do flask
 if __name__ == '__main__':

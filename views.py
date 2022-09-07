@@ -1,11 +1,15 @@
 #bibliotecas
-from flask import render_template, request, Blueprint
-from flask_login import LoginManager
+from flask import (
+    render_template, request, Blueprint, session, redirect, url_for
+)
 from methods import Conexao_DB
 from datetime import datetime
 
+from models.user import Usuario
+
 #declara views com Blueprint
 views = Blueprint(__name__, 'views')
+
 
 #gestao de login
 # gestao_login = LoginManager()
@@ -14,8 +18,6 @@ views = Blueprint(__name__, 'views')
 # @gestao_login.user_loader
 # def carrgar_usuario(user_id):
 #     return User.get(user_id)
-
-
 
 #exceções
 class Abort(Exception):
@@ -58,12 +60,18 @@ def login():
         senha = request.form['senha']
         if email and senha and Conexao_DB.autenticar_usuario(email, senha, 'pacientes'):
             usuario = Conexao_DB.selecionar_agente_email(email)
-            return 'Usuario logado: ' + usuario['nome']
+            session['user'] = usuario['nome']
+            return redirect(url_for('views.usuario'))
+        else:
+            return render_template('login.html')
     else:
-
         return render_template('login.html')
 
 @views.route('/usuario', methods = ['POST', 'GET'])
-def agendamentos():
-    return render_template('usuario.html')
+def usuario():
+    if 'user' in session:
+        usuario = session['user']
+        return render_template('usuario.html')
+    else:
+        return render_template('login.html')
     
