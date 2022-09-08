@@ -55,7 +55,7 @@ def cadastrarAgente():
 
 @views.route('/login', methods = ['POST', 'GET'])
 def login():
-    if request.method == 'POST':
+    if request.method == 'POST' and 'user' not in session:
         email = request.form['email']
         senha = request.form['senha']
         if email and senha and Conexao_DB.autenticar_usuario(email, senha, 'pacientes'):
@@ -65,7 +65,7 @@ def login():
         else:
             return render_template('login.html')
     else:
-        return render_template('login.html')
+        return redirect(url_for('views.usuario'))
 
 @views.route('/usuario', methods = ['POST', 'GET'])
 def usuario():
@@ -74,4 +74,19 @@ def usuario():
         return render_template('usuario.html')
     else:
         return render_template('login.html')
+
+@views.route('agendamento')
+def agendamento():
+    if 'user' in session:
+        return render_template('agendamento.html')
+    else:
+        return redirect(url_for('views.login'))
+    
+@views.route('/logout')
+def logout():
+    if 'user' in session:
+        session.pop('user', None)
+        return redirect(url_for('views.home'))
+    else:
+        return redirect(url_for('views.home'))
     
