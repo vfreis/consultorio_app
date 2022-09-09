@@ -75,13 +75,21 @@ def usuario():
     else:
         return render_template('login.html')
 
-@views.route('agendamento')
+@views.route('/agendamento', methods = ['POST', 'GET'])
 def agendamento():
+    if request.method == "POST" and 'user' in session:
+        paciente = session['user']
+        data = request.form['data']
+        hora = request.form['hora']
+        local = request. form['local']
+        especialidade = request.form['especialidade']
+        medico = request.form['medico']
+        return (Conexao_DB.agendar_consulta(paciente, data, hora, local, especialidade, medico) + '''<a class="nav-link" href="usuario"> Clique aqui para Voltar</a>''') 
     if 'user' in session:
         return render_template('agendamento.html')
     else:
         return redirect(url_for('views.login'))
-    
+
 @views.route('/logout')
 def logout():
     if 'user' in session:

@@ -23,6 +23,39 @@
         {{session['user']}}, agende consulta com a escolha da especialidade, dentista, data, horário e local
     </p>
 
+    <div class="span">
+        <div class="card text-bg-light d-flex align-content-center" style="max-width: 50rem;">
+            <div class="card-header">Agendar Consulta</div>
+            <div class="card-body">
+              <form action="/agendamento" method="POST">
+                  <div class="input-group mb-3">
+                      <span class="input-group-text">Dia</span>
+                      <input id="data" name = "data"type="date" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                  </div>
+                  <div class="input-group mb-3">
+                      <span class="input-group-text">Hora</span>
+                      <input id="hora" name = "hora" type="time" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                  </div>
+                  <div class="input-group mb-3">
+                      <span class="input-group-text">Consultorio / Local</span>
+                      <input id="local" name = "local" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                  </div>
+                  <div class="input-group mb-3">
+                      <span class="input-group-text">Especialidade</span>
+                      <input id="especialidade" name = "especialidade" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                  </div>
+                  <div class="input-group mb-3">
+                      <span class="input-group-text">Medico</span>
+                      <input id="medico" name = "medico" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                  </div>
+                  <button  type="submit" class="btn btn-primary botaologin">Agendar</button>
+              </form>
+        </div>
+
+    </div>
+
+
+
     {% endblock %}
 </body>
 </html>

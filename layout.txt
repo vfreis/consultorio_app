@@ -1,5 +1,5 @@
 - home nao fizemos
-- cadastro ok
+- cadastro [paciente ok] [falta cadastro medico e atendente]
 - login ok
 - consulta 
-- agendamento
+- agendamento ok [precisamos adicionar chave para relacionar dados, e chave para evitar duplicidade, além de campos selecionaveis]
