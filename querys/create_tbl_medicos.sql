@@ -1,8 +1,8 @@
 use consulta_app_alpha
 
-drop table if exists pacientes
+drop table if exists medicos
 
-create table pacientes (
+create table medicos (
 
 	id int identity,
 	status bit not null, -- verdadeiro sempre
@@ -13,6 +13,7 @@ create table pacientes (
 	telefone varchar(50),
 	sexo varchar(50) not null,
 	cpf varchar(50) primary key not null,
+    crm varchar(50) unique not null,
 	senha varchar(50) not null,
 	data_criacao date,
 

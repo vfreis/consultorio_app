@@ -1,11 +1,10 @@
 #bibliotecas
 from flask import (
-    render_template, request, Blueprint, session, redirect, url_for
+    render_template, request, Blueprint, session, redirect, url_for, flash
 )
 from methods import Conexao_DB
 from datetime import datetime
 
-from models.user import Usuario
 
 #declara views com Blueprint
 views = Blueprint(__name__, 'views')
@@ -37,7 +36,7 @@ def cadastrarAgente():
 
     if request.method == 'POST':
         nome = request.form['nome']
-        dt_nasc = request.form['dt_nasc']
+        dt_nasc_date = request.form['dt_nasc']
         email = request.form['email']
         celular = request.form['celular']
         telefone = request.form['telefone']
@@ -45,10 +44,10 @@ def cadastrarAgente():
         cpf = request.form['cpf']
         senha = request.form['senha']
         #converte, pois no banco parametro 'dt_nasc' é date; necessário?!
-        try:
-            dt_nasc_date = datetime.strptime(dt_nasc, '%d/%m/%Y').date()
-        except ValueError:
-            Abort(404)
+        # try:
+        #     dt_nasc_date = datetime.strptime(dt_nasc, '%d/%m/%Y').date()
+        # except ValueError:
+        #     Abort(404)
         return Conexao_DB.inserir_agente(nome, dt_nasc_date, email, celular, telefone, sexo, cpf, senha, agente = 'pacientes')
     else:
         return render_template('cadastro.html')
@@ -61,6 +60,8 @@ def login():
         if email and senha and Conexao_DB.autenticar_usuario(email, senha, 'pacientes'):
             usuario = Conexao_DB.selecionar_agente_email(email)
             session['user'] = usuario['nome']
+            session['cpf'] = usuario['cpf']
+            session['email'] = usuario['email']
             return redirect(url_for('views.usuario'))
         else:
             return render_template('login.html')
@@ -79,16 +80,27 @@ def usuario():
 def agendamento():
     if request.method == "POST" and 'user' in session:
         paciente = session['user']
+        cpf = session['cpf']
         data = request.form['data']
         hora = request.form['hora']
         local = request. form['local']
         especialidade = request.form['especialidade']
         medico = request.form['medico']
-        return (Conexao_DB.agendar_consulta(paciente, data, hora, local, especialidade, medico) + '''<a class="nav-link" href="usuario"> Clique aqui para Voltar</a>''') 
+        return (Conexao_DB.agendar_consulta(paciente, cpf, data, hora, local, especialidade, medico) + '''<a class="nav-link" href="usuario"> Clique aqui para Voltar</a>''') 
     if 'user' in session:
         return render_template('agendamento.html')
     else:
         return redirect(url_for('views.login'))
+
+@views.route('/meus_agendamentos')
+def meus_agendamentos():
+    if 'user' in session:
+        agendamentos = Conexao_DB.meus_agendamentos(session['cpf']) 
+        return render_template('meus_agendamentos.html')
+    if 'user' not in session:
+        return redirect(url_for('login'))
+    else:
+        return render_template('meus_agendamentos.html')
 
 @views.route('/logout')
 def logout():

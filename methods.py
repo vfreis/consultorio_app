@@ -75,18 +75,26 @@ class Conexao_DB():
         else:
             return False
 
-    def agendar_consulta(paciente, data, hora, local, especialidade, medico):
-        insert = f'''INSERT INTO agendamentos (status, paciente, data_consulta, hora_consulta, consultorio, medico, especilidade) values ('True','{paciente}', '{data}', '{hora}', '{local}', '{especialidade}', '{medico}') '''
+    def agendar_consulta(paciente, cpf, data, hora, local, especialidade, medico):
+        insert = f'''INSERT INTO agendamentos (status, paciente, cpf_paciente, data_consulta, hora_consulta, consultorio, medico, especialidade) values ('True','{paciente}', '{cpf}', '{data}', '{hora}', '{local}', '{especialidade}', '{medico}') '''
+        # cursor.execute(insert)
+        # cnn.commit()
+        # return f'Consulta agendadada para: {paciente}, em {data} ás {hora}, com Dr. {medico} para {especialidade}'        
         try:
             cursor.execute(insert)
             cnn.commit()
             return f'Consulta agendadada para: {paciente}, em {data} ás {hora}, com Dr. {medico} para {especialidade}'
         except:
             return 'N/D'
-
+    
+    def meus_agendamentos(cpf):
+        consulta = f'''SELECT paciente, data_consulta as Dia, left(hora_consulta, 5) as Horário, especialidade as Especialidade, medico as Medico, consultorio as Local from agendamentos where cpf_paciente = {cpf} order by data_consulta asc '''
+        return (Conexao_DB.realizar_consulta(consulta))
 
 # testes
-# print(Conexao_DB.agendar_consulta('Vinicios', '01/01/2022', '12:00', 'Consultorio', "Odonto", 'Chico'))
+# print(Conexao_DB.test_conn())
+# print(Conexao_DB.agendar_consulta('Vinicios','222222222' , '01/01/2022', '12:00', 'Consultorio', 'Chico', 'Odonto'))
+# print(Conexao_DB.meus_agendamentos('222222222'))
 # print(Conexao_DB.autenticar_usuario('testes@teste', 'teste'))
 # consulta = '''select * from pacientes where email = 'testes@teste' '''
 # Conexao_DB.realizar_consulta(consulta)
