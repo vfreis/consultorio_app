@@ -1,4 +1,4 @@
-- home nao fizemos
+- home [nao fizemos]
 - cadastro [paciente ok] [falta cadastro medico e atendente]
 - login ok
 - consulta 
