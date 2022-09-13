@@ -1,10 +1,8 @@
 use consulta_app_alpha
 
-drop table if exists pacientes
 
 create table pacientes (
 
-	id int identity,
 	status bit not null, -- verdadeiro sempre
 	nome varchar(50) not null,
 	dt_nasc date not null,
@@ -14,6 +12,5 @@ create table pacientes (
 	sexo varchar(50) not null,
 	cpf varchar(50) primary key not null,
 	senha varchar(50) not null,
-	data_criacao date,
-
+	data_criacao date
 )
