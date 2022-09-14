@@ -54,17 +54,20 @@ class Conexao_DB():
         timestamp = date.today()
         insert = f'''insert into {agente} (status, nome, dt_nasc, email, celular, telefone, sexo, cpf, senha, data_criacao) values('True' , '{nome}', '{dt_nasc}', '{email}', '{celular}', '{telefone}', '{sexo}', '{cpf}','{senha}', '{timestamp}')'''
         cursor.execute(insert)
-        return Conexao_DB.selecionar_agente_cpf(cpf, agente)[0]['nome'] + ' adicionado'
+        conn.commit()
+        return nome + ' adicionado'
 
     def selecionar_agente_cpf(cpf, agente = 'pacientes'):
         consulta = f'''SELECT * FROM {agente} WHERE CPF = {cpf}'''
         resultado = Conexao_DB.realizar_consulta(consulta)
         return resultado
-    
 
-consulta = ''' insert into pacientes (status, nome, dt_nasc, email, celular, telefone, sexo, cpf, senha, data_criacao ) values (true,'Edherzito', '01-01-1929', 'edherzito@blaaa.com.br',"1195866325", "11495464987", 'm', "000005900", "senha", curdate()) '''
-print(Conexao_DB.realizar_consulta(consulta))
-#print(Conexao_DB.inserir_agente('Edherzito', '01-01-1929', 'edherzito@blaa.com.br',"1195866325", "11495464987", 'm', "0000059878", "senha", 'pacientes'))
+
+
+
+# consulta = ''' insert into pacientes (status, nome, dt_nasc, email, celular, telefone, sexo, cpf, senha, data_criacao ) values (true,'Edherzito', '01-01-1929', 'edherzito@blaaa.com.br',"1195866325", "11495464987", 'm', "000005900", "senha", curdate()) '''
+# print(Conexao_DB.realizar_consulta(consulta))
+print(Conexao_DB.inserir_agente('Gabi', '01/01/1929', 'gabi@blaa.com',"1195866325", "11495464989", 'm', "0000059812", "senha", 'pacientes'))
 #consulta = 'select * from pacientes'
 #print(Conexao_DB.realizar_consulta(consulta))
 #print(Conexao_DB.test_conn())
