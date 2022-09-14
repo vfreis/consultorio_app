@@ -18,14 +18,6 @@ app.config['MYSQL_DATABASE_PASSWORD'] = env_var_mysql['password']
 app.config['MYSQL_DATABASE_DB'] = env_var_mysql['database']
 mysql.init_app(app)
 
-# Conexão com o DB
-# conn = mysql.connect()
-# cursor = conn.cursor()
-
-# cursor.execute("SELECT * from pacientes")
-# data = cursor.fetchone()
-# print(data)
-
 class Conexao_DB():
     
     def test_conn():
@@ -41,7 +33,6 @@ class Conexao_DB():
         json_obj = json.loads(json_str)
         return json_obj
     
-#print(Conexao_DB.test_conn())
 
     def realizar_consulta(consulta):
             conn = mysql.connect()
@@ -55,9 +46,6 @@ class Conexao_DB():
             json_obj = json.loads(json_str)
             return json_obj
 
-#consulta = 'select * from pacientes'
-
-#print(Conexao_DB.realizar_consulta(consulta))
 
 
     def inserir_agente(nome, dt_nasc, email, celular, telefone, sexo, cpf, senha, agente):
@@ -73,8 +61,13 @@ class Conexao_DB():
         resultado = Conexao_DB.realizar_consulta(consulta)
         return resultado
     
-print(Conexao_DB.inserir_agente('Edherzito', '01/01/1929', 'edherzito@bla.com.br',"1195866325", "11495464987", 'm', "0000059874", "senha", 'pacientes'))
 
+consulta = ''' insert into pacientes (status, nome, dt_nasc, email, celular, telefone, sexo, cpf, senha, data_criacao ) values (true,'Edherzito', '01-01-1929', 'edherzito@blaaa.com.br',"1195866325", "11495464987", 'm', "000005900", "senha", curdate()) '''
+print(Conexao_DB.realizar_consulta(consulta))
+#print(Conexao_DB.inserir_agente('Edherzito', '01-01-1929', 'edherzito@blaa.com.br',"1195866325", "11495464987", 'm', "0000059878", "senha", 'pacientes'))
+#consulta = 'select * from pacientes'
+#print(Conexao_DB.realizar_consulta(consulta))
+#print(Conexao_DB.test_conn())
 
 
 
