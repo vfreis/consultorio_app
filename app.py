@@ -13,7 +13,7 @@ app.config['SECRET_KEY'] = 'super secret key'
 #seta configurações do flask
 if __name__ == '__main__':
     porta = int(os.environ.get('PORT', 5002))
-    app.run(host= 'localhost', port = porta, debug=True)
+    app.run(host= '0.0.0.0', port = porta, debug=True)
 
 #validações
 # return Conexao_DB.inserir_agente(nome, dt_nasc_date, email, celular, telefone, sexo, cpf, senha, agente = 'pacientes')
