@@ -38,6 +38,7 @@ class Conexao_DB():
             conn = mysql.connect()
             cursor = conn.cursor()
             cursor.execute(consulta)
+
             colunas = [coluna[0] for coluna in cursor.description]
             resultados = []
             for linha in cursor.fetchall():
