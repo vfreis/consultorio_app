@@ -1,11 +1,13 @@
 from . import db
 from sqlalchemy.sql import func
+from flask_login import UserMixin
 
-class User(db.Model):
+class User(db.Model, UserMixin):
     __tablename__ = "user"
-    id = db.Column(db.Integer, primary_key = True)
+    id = db.Column(db.Integer, primary_key = True, autoincrement = True)
     status = db.Column(db.Boolean, default = True)
     name = db.Column(db.String(150))
+    sex = db.Column(db.String(20))
     address = db.Column(db.String(150))
     birthday = db.Column(db.DateTime)
     email = db.Column(db.String(150), unique = True)
@@ -17,7 +19,7 @@ class User(db.Model):
 
 class Schedule(db.Model):
     __tablename__ = "schedule"
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement = True )
     created_at = db.Column(db.DateTime(timezone=True), default=func.now())
     status = db.Column(db.Boolean, default = True)
     patient_name = db.Column(db.String(150))
