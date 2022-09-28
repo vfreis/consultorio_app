@@ -17,11 +17,11 @@ def login():
         _email = request.form['email']
         _senha = request.form['senha']
         current_user = User.query.filter_by(email = _email).first()
-        print(f'{current_user.password} = {_senha}')
+        # print(f'{current_user.password} = {_senha}')
         if current_user:
             if current_user.password == _senha:
                 login_user(current_user, remember = True)               
-                return redirect(url_for('views.schedule'))
+                return redirect(url_for('views.schedule', user = current_user))
             else:
                 return 'wrong email or password'
     else:
