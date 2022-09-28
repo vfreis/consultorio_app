@@ -17,4 +17,5 @@ def new_user():
         add_user('vinicios', 'rua 123', '01/01/2021', 'teste@gmail6', '11993408348', '22972425819', '123456')
     except:
         return 'add_user not posible'
+  
     return 'user added'
