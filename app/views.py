@@ -29,6 +29,7 @@ def login():
 
 @views.route('/new_user', methods = ['GET', 'POST'])
 def new_user():
+<<<<<<< HEAD
     if request.method == 'GET': 
         return render_template('new_user.html')
     elif request.method == 'POST':
@@ -49,3 +50,11 @@ def new_user():
 def schedule():
     return render_template('schedule.html')
         
+=======
+    try:
+        add_user('vinicios', 'rua 123', '01/01/2021', 'teste@gmail6', '11993408348', '22972425819', '123456')
+    except:
+        return 'add_user not posible'
+  
+    return 'user added'
+>>>>>>> 2b75741c8ea4e3770c4f701e762a9446a15e9360
