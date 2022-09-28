@@ -17,10 +17,19 @@
 </head>
 <body>
     {% extends 'index.html' %}
-    {% block usuario %}
+    {% block content %}
 
+
+    {% for note in current_user.name %}
+    <li class="list-group-item">
+      {{ note.data }}
+      <button type="button" class="close" onClick="deleteNote({{ note.id }})">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </li>
+    {% endfor %}
     <p>
-        {{session['user']}}, agende consulta com a escolha da especialidade, dentista, data, horário e local
+        {{current_user.name}}, agende consulta com a escolha da especialidade, dentista, data, horário e local
     </p>
 
     <div class="span">
