@@ -15,6 +15,8 @@
     <title>Consultorio App | Home</title>
 </head>
 <body>
+      <!-- Início da barra de navegação-->
+      
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light">
         <div class="container-fluid">
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,6 +31,20 @@
               <li class="nav-item">
                 <a class="nav-link" href="#">Contato</a>
               </li>
+              
+          
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Área do Cliente</a>
+                <ul class="dropdown-menu dropdown-menu dropdown-menu-dark">
+                  <li><a class="dropdown-item" href="#">Meus Agendamentos</a></li>
+                  <li><a class="dropdown-item" href="#">Agendar Consulta</a></li>
+                  <li><a class="dropdown-item" href="#">Editar Cadastro</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Logout</a></li>
+                </ul>
+              </li>
+              
               
               {% if _user.is_authenticated %}
 
@@ -45,7 +61,7 @@
                 <a class="nav-link" href="my_schedule">Minha Agenda</a>
               </li>
               
-              
+  
               
 
               {% else %}
@@ -65,6 +81,8 @@
           </div>
         </div>
       </nav>
+
+      <!-- Fim da barra de navegação-->
       
       {% with messages = get_flashed_messages(with_categories=true) %} {% if
         messages %} {% for category, message in messages %} {% if category ==
