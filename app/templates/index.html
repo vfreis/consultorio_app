@@ -28,9 +28,12 @@
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="home">Home</a>
               </li>
+
+
               <li class="nav-item">
                 <a class="nav-link" href="signin">Login</a>
               </li>
+              
               <li class="nav-item">
                 <a class="nav-link" href="#">Contato</a>
               </li>
@@ -40,34 +43,24 @@
               
               
               {% if _user.is_authenticated %}
-              <ul class="nav nav-pills">
+             
 
-              
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Área do Cliente</a>
-                <ul class="dropdown-menu dropdown-menu dropdown-menu-dark">
-                  <li><a class="dropdown-item" href="my_schedule">Meus Agendamentos</a></li>
-                  <li><a class="dropdown-item" href="schedule">Agendar Consulta</a></li>
-                  <li><a class="dropdown-item" href="user">Editar Cadastro</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Logout</a></li>
-                </ul>
-              </li>
-            </ul>
-
-              <li class="nav-item">
-                <a class="nav-link" href="signout">Sair</a>
-              </li>
+             
               <li class="nav-item">
                 <a class="nav-link" href="schedule">Agendar</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="user">Meus Dados</a>
-              </li>
+
               <li class="nav-item">
                 <a class="nav-link" href="my_schedule">Minha Agenda</a>
               </li>
-              
+
+              <li class="nav-item">
+                <a class="nav-link" href="user">Meus Dados</a>
+              </li>
+             
+              <li class="nav-item">
+                <a class="nav-link" href="signout">Sair</a>
+              </li>
   
               
 
@@ -79,10 +72,7 @@
               {% endif %}
 
             </ul>
-            <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Busca" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Busca</button>
-            </form>
+
           </div>
         </div>
       </nav>
