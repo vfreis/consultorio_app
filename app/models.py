@@ -28,3 +28,15 @@ class Schedule(db.Model):
     doctor = db.Column(db.String(150))
     type_of_doctor = db.Column(db.String(150))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id')) # relation with tbl schedule 
+
+    def __init__(self, id, created_at, status,patient_name, scheduled_to, clinic_address, doctor, type_of_doctor, user_id ):
+        self.id = id
+        self.created_at = created_at
+        self.status = status
+        self.patient_name = patient_name
+        self.scheduled_to = scheduled_to
+        self.clinic_address = clinic_address
+        self.doctor = doctor
+        self.type_of_doctor = type_of_doctor
+        self.user_id = user_id
+        

@@ -1,6 +1,5 @@
 from flask import (Blueprint, render_template, request, redirect, url_for, flash)
-from .models import User
-from datetime import datetime
+from .models import User, Schedule
 from . import db
 from flask_login import current_user, login_required, login_user, logout_user
 from werkzeug.security import check_password_hash
@@ -61,23 +60,30 @@ def user():
 @views.route('/schedule', methods = ['POST', 'GET'])
 def schedule():
     # return render_template('schedule.html', _user = current_user)
-    if request.method == 'GET' and current_user.is_authenticated:
-        return render_template('schedule.html', _user = current_user)
+    # add_schedule('vinicios', '29/09/2022', 'sao paulo', 'mario', 'odonto', 1)
+    # resposta = add_schedule('vinicios', '29/09/2022', 'sao paulo', 'mario', 'odonto', 1)
+    # resposta = add_schedule('vinicios')
+    schedule_var = Schedule('Will', '29/09/2022', 'sao paulo', 'mario', 'odonto', 1)
+    db.session.add(schedule_var)
+    resposta = db.session.commit()
+    return resposta
+    # if request.method == 'GET' and current_user.is_authenticated:
+    #     return render_template('schedule.html', _user = current_user)
     
-    if request.method == 'POST' and current_user.is_authenticated:
-        _data = request.form['data']
-        _hora = request.form['hora']
-        _local = request.form['local']
-        _especialidade = request.form['especialidade']
-        _nome_medico = request.form['medico']
-        _data_hora = f'{_data} {_hora}'
-        try:
-        # add_schedule(_user, _date, _clinic, _doctor, type_of_doctor, _user_id)
-            add_schedule(current_user.name, _dat, _local, _nome_medico, _especialidade, current_user.user_id)
-        except:
-            return '''<h1>Erro<h1><a href='user'>Voltar<a/>'''
-    else:
-        return redirect(url_for('views.home'))
+    # if request.method == 'POST' and current_user.is_authenticated:
+    #     _data = request.form['data']
+    #     _hora = request.form['hora']
+    #     _local = request.form['local']
+    #     _especialidade = request.form['especialidade']
+    #     _nome_medico = request.form['medico']
+    #     _data_hora = f'{_data} {_hora}'
+    #     try:
+    #     # add_schedule(_user, _date, _clinic, _doctor, type_of_doctor, _user_id)
+    #         add_schedule(current_user.name, _data, _local, _nome_medico, _especialidade, current_user.user_id)
+    #     except:
+    #         return '''<h1>Erro<h1><a href='user'>Voltar<a/>'''
+    # else:
+    #     return redirect(url_for('views.home'))
 
 @views.route('/signout')
 def sigout():
