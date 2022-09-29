@@ -37,19 +37,23 @@
               
           
 
+              
+              
+              {% if _user.is_authenticated %}
+              <ul class="nav nav-pills">
+
+              
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Área do Cliente</a>
                 <ul class="dropdown-menu dropdown-menu dropdown-menu-dark">
-                  <li><a class="dropdown-item" href="#">Meus Agendamentos</a></li>
-                  <li><a class="dropdown-item" href="#">Agendar Consulta</a></li>
-                  <li><a class="dropdown-item" href="#">Editar Cadastro</a></li>
+                  <li><a class="dropdown-item" href="my_schedule">Meus Agendamentos</a></li>
+                  <li><a class="dropdown-item" href="schedule">Agendar Consulta</a></li>
+                  <li><a class="dropdown-item" href="user">Editar Cadastro</a></li>
                   <li><hr class="dropdown-divider"></li>
                   <li><a class="dropdown-item" href="#">Logout</a></li>
                 </ul>
               </li>
-              
-              
-              {% if _user.is_authenticated %}
+            </ul>
 
               <li class="nav-item">
                 <a class="nav-link" href="signout">Sair</a>
