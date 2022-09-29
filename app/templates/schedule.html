@@ -16,8 +16,8 @@
     <title>Consultorio App | Agendamento</title>
 </head>
 <body>
-    {% extends 'index.html' %}
-    {% block content %}
+    {% extends 'user.html' %}
+    {% block user %}
 
 
     <!-- {% for note in current_user.name %}
@@ -29,7 +29,7 @@
     </li>
     {% endfor %} -->
     <p>
-        {{current_user.name}}, agende consulta com a escolha da especialidade, dentista, data, horário e local
+        {{_user.name}}, agende consulta com a escolha da especialidade, dentista, data, horário e local
     </p>
 
     <div class="span">
