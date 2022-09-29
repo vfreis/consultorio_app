@@ -74,7 +74,10 @@ def sigout():
 
 @views.route('my_schedule')
 def my_schedule():
-    return render_template('my_schedule.html', _user = current_user)
+    if request.method == 'POST' and current_user.is_authenticated:
+        pass
+    elif current_user.is_authenticated:
+        return render_template('my_schedule.html', _user = current_user)
 # @views.route('/schedule', methods = ['GET', 'POST'], )
 # def schedule():
 #     return render_template('schedule.html')
