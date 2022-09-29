@@ -1,4 +1,4 @@
-from flask import (Blueprint, render_template, request, redirect, url_for)
+from flask import (Blueprint, render_template, request, redirect, url_for, flash)
 from .models import User
 from . import db
 from flask_login import current_user, login_required, login_user, logout_user
@@ -13,21 +13,23 @@ def home():
     return render_template('index.html')
 
 @views.route('/sigin', methods = ['GET', 'POST'])
-def login():
+def sigin():
     if request.method == 'POST':
         _email = request.form['email']
         _senha = request.form['senha']
-        current_user = User.query.filter_by(email = _email).first()
-        # print(f'{current_user.password} = {_senha}')
-        if current_user:
-            if current_user.password == _senha:
-                login_user(current_user, remember = True)               
-                return redirect(url_for('views.user', user = current_user))
+        _user = User.query.filter_by(email = _email).first()
+        print(f'{_user.password}')
+        if _user:
+            if (_user.password == _senha):
+                flash('Logged in successfully!', category='success')
+                login_user(_user, remember=True)
+                return redirect(url_for('views.user'))
             else:
-                return 'wrong email or password'
-    else:
-        render_template('sigin.html')
-    return render_template('sigin.html')
+                flash('Incorrect password, try again.', category='error')
+        else:
+            flash('Email does not exist.', category='error')
+
+    return render_template("sigin.html", _user=current_user)
 
 @views.route('/signup', methods = ['GET', 'POST'])
 def signup():
@@ -48,17 +50,19 @@ def signup():
         return f'{nome}, adicionado! <a href="/">Clique aqui</a> para voltar'
 
 @views.route('/user', methods = ['GET'])
+@login_required
 def user():
-    return render_template('user.html')
+    return render_template('user.html', _user = current_user)
 
 @views.route('/schedule', methods = ['POST', 'GET'])
 def schedule():
-    if request.method == 'GET' and current_user:
-        return render_template('schedule.html')
-    if request.method == 'POST' and current_user:
-        return render_template('schedule.html')
+    # return render_template('schedule.html', _user = current_user)
+    if request.method == 'GET' and current_user.is_authenticated:
+        return render_template('schedule.html', _user = current_user)
+    if request.method == 'POST'and current_user.is_authenticated:
+        return render_template('schedule.html', _user = current_user)
     else:
-        return render_template('sigin.html')
+        return redirect(url_for('views.home'))
 
 @views.route('/signout')
 def sigout():
@@ -67,7 +71,7 @@ def sigout():
 
 @views.route('my_schedule')
 def my_schedule():
-    return render_template('my_schedule.html', user = current_user)
+    return render_template('my_schedule.html', _user = current_user)
 # @views.route('/schedule', methods = ['GET', 'POST'], )
 # def schedule():
 #     return render_template('schedule.html')
