@@ -27,17 +27,36 @@
                 <a class="nav-link active" aria-current="page" href="home">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="signup">Entrar</a>
+                <a class="nav-link" href="#">Contato</a>
+              </li>
+              
+              {% if _user.is_authenticated %}
+
+              <li class="nav-item">
+                <a class="nav-link" href="signout">Sair</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link">Contato</a>
+                <a class="nav-link" href="schedule">Agendar</a>
               </li>
-              <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                  </li>
-                  <li class="n
+              <li class="nav-item">
+                <a class="nav-link" href="user">Meus Dados</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="my_schedule">Minha Agenda</a>
+              </li>
+              
+              
+              
+
+              {% else %}
+              
+              <li class="nav-item">
+                <a class="nav-link" href="sigin">Entrar</a>
+              </li>
+              <a class="nav-link disabled">Deslogado</a>
+
+              {% endif %}
+
             </ul>
             <form class="d-flex" role="search">
               <input class="form-control me-2" type="search" placeholder="Busca" aria-label="Search">
@@ -69,7 +88,7 @@
       {% block content %}
 
       {% if usuario %}
-      Olá, {usuario}
+      Olá, {_user.name}
       {% endif %}
 
       <h2>Home Page</h2>

@@ -12,8 +12,8 @@ views = Blueprint('views', __name__)
 def home():
     return render_template('index.html', _user = current_user)
 
-@views.route('/sigin', methods = ['GET', 'POST'])
-def sigin():
+@views.route('/signin', methods = ['GET', 'POST'])
+def signin():
     if request.method == 'POST':
         _email = request.form['email']
         _senha = request.form['senha']
@@ -29,13 +29,14 @@ def sigin():
         else:
             flash('Email does not exist.', category='error')
 
-    return render_template("sigin.html", _user=current_user)
+    return render_template("signin.html", _user=current_user)
 
 @views.route('/signup', methods = ['GET', 'POST'])
 def signup():
 
     if request.method == 'GET' and current_user.is_authenticated : 
         return redirect(url_for('views.user'))
+    
     elif request.method == 'POST':
         # _name, _address, _birthday, _email, _phone, _doc_id, _password
         nome = request.form['nome']
@@ -49,7 +50,7 @@ def signup():
         add_user(nome, endereco, dt_nasc_date, email, celular, cpf, senha)
         return f'{nome}, adicionado! <a href="/">Clique aqui</a> para voltar'
     else:
-        return redirect(url_for('views.sigin'))
+        return render_template('signup.html', _user = current_user)
 
 @views.route('/user', methods = ['GET'])
 @login_required
@@ -73,7 +74,12 @@ def sigout():
 
 @views.route('my_schedule')
 def my_schedule():
-    return render_template('my_schedule.html', _user = current_user)
+    if request.method == 'POST' and current_user.is_authenticated:
+        pass
+    elif current_user.is_authenticated:
+        return render_template('my_schedule.html', _user = current_user)
+    else:
+        return redirect(url_for('views.signin'))
 # @views.route('/schedule', methods = ['GET', 'POST'], )
 # def schedule():
 #     return render_template('schedule.html')
