@@ -36,6 +36,7 @@ def signup():
 
     if request.method == 'GET' and current_user.is_authenticated : 
         return redirect(url_for('views.user'))
+    
     elif request.method == 'POST':
         # _name, _address, _birthday, _email, _phone, _doc_id, _password
         nome = request.form['nome']
@@ -49,7 +50,7 @@ def signup():
         add_user(nome, endereco, dt_nasc_date, email, celular, cpf, senha)
         return f'{nome}, adicionado! <a href="/">Clique aqui</a> para voltar'
     else:
-        return redirect(url_for('views.sigin'))
+        return render_template('signup.html', _user = current_user)
 
 @views.route('/user', methods = ['GET'])
 @login_required
