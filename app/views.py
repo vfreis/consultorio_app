@@ -10,7 +10,7 @@ views = Blueprint('views', __name__)
 @views.route('/home', methods = ['GET', 'POST'])
 @views.route('/', methods = ['GET', 'POST'])
 def home():
-    return render_template('index.html')
+    return render_template('index.html', _user = current_user)
 
 @views.route('/sigin', methods = ['GET', 'POST'])
 def sigin():
@@ -34,8 +34,8 @@ def sigin():
 @views.route('/signup', methods = ['GET', 'POST'])
 def signup():
 
-    if request.method == 'GET': 
-        return render_template('signup.html')
+    if request.method == 'GET' and current_user.is_authenticated : 
+        return redirect(url_for('views.user'))
     elif request.method == 'POST':
         # _name, _address, _birthday, _email, _phone, _doc_id, _password
         nome = request.form['nome']
@@ -48,6 +48,8 @@ def signup():
         senha = request.form['senha']
         add_user(nome, endereco, dt_nasc_date, email, celular, cpf, senha)
         return f'{nome}, adicionado! <a href="/">Clique aqui</a> para voltar'
+    else:
+        return redirect(url_for('views.sigin'))
 
 @views.route('/user', methods = ['GET'])
 @login_required
