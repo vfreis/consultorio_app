@@ -38,8 +38,8 @@
 
     </div>
     {% endblock %}
-    {% if usuario %}
-    Olá, {usuario}
+    {% if current_user %}
+    Olá, {current_user.name} !
     {% endif %}
 </body>
 </html>
