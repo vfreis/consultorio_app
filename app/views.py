@@ -12,8 +12,8 @@ views = Blueprint('views', __name__)
 def home():
     return render_template('index.html', _user = current_user)
 
-@views.route('/sigin', methods = ['GET', 'POST'])
-def sigin():
+@views.route('/signin', methods = ['GET', 'POST'])
+def signin():
     if request.method == 'POST':
         _email = request.form['email']
         _senha = request.form['senha']
@@ -29,7 +29,7 @@ def sigin():
         else:
             flash('Email does not exist.', category='error')
 
-    return render_template("sigin.html", _user=current_user)
+    return render_template("signin.html", _user=current_user)
 
 @views.route('/signup', methods = ['GET', 'POST'])
 def signup():
@@ -78,6 +78,8 @@ def my_schedule():
         pass
     elif current_user.is_authenticated:
         return render_template('my_schedule.html', _user = current_user)
+    else:
+        return redirect(url_for('views.signin'))
 # @views.route('/schedule', methods = ['GET', 'POST'], )
 # def schedule():
 #     return render_template('schedule.html')
