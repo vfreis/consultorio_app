@@ -26,14 +26,25 @@
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="home">Home</a>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a class="nav-link" href="signup">Cadastrar</a>
-              </li>
+              </li> -->
               <li class="nav-item">
                 <a class="nav-link" href="sigin">Login</a>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a class="nav-link disabled">Agende sua Consulta!</a>
+              </li> -->
+              {% if _user.is_authenticated %}
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown link
+                </a>
+                <ul class="dropdown-menu ">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
               </li>
             </ul>
             <form class="d-flex" role="search">

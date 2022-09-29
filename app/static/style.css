@@ -4,3 +4,9 @@
     align-content: center;
     align-items: center;
 }
+
+.signup_btn:hover{
+    color: whitesmoke;
+    text-decoration: none;
+    font-style: normal;
+}
