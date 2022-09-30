@@ -11,3 +11,21 @@
     font-style: normal;
 }
 
+
+
+
+.img_principal{
+    object-fit: cover;
+    padding: 0.5%;
+    object-position: 0 30%;
+    height: 700px;
+}
+
+.rodape{
+    padding: 3%;
+}
+
+
+.botaologin{
+    text: center;
+}
