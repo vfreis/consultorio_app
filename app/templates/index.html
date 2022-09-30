@@ -16,14 +16,14 @@
 </head>
 <body>
       <!-- Início da barra de navegação-->
-      
-    <nav class=" navbar-dark  bg-dark  navbar   navbar-expand-lg  shadow p-3 mb-5 ">
-        <img src="\static\logo.jpg" alt="">
+<nav class=" navbar-dark  bg-dark  navbar   navbar-expand-lg  shadow p-2 mb-5  ">
+      <div class="container">    
+       <!-- <img src="\static\logo.jpg" alt=""> --> 
+       <a class="navbar-brand" href="home">Clínica <span>Alpha</span></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <a class="navbar-brand" href="home">Clínica Alpha</a>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="home">Home</a>
@@ -74,9 +74,8 @@
             </ul>
 
           </div>
-        
-      </nav>
-
+      </div> 
+</nav>            
       <!-- Fim da barra de navegação-->
       
       {% with messages = get_flashed_messages(with_categories=true) %} {% if
@@ -107,6 +106,15 @@
       <h2>Home Page</h2>
       {% endblock content %}
 
+
+<section>
+  <div class="row">
+    
+
+  </div>
+</section>
+
+      
       <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
