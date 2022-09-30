@@ -1,4 +1,5 @@
 from .models import Schedule, User
+from flask_login import current_user
 from . import db
 
 def add_user(_name, _address, _birthday, _email, _phone, _doc_id, _password ):
@@ -17,9 +18,10 @@ def add_user(_name, _address, _birthday, _email, _phone, _doc_id, _password ):
     # type_of_doctor = db.Column(db.String(150))
     # user_id = db.Column(db.Integer, db.ForeignKey('user.id')) # relation with tbl schedule 
 
+    # _patient_name, _scheduled_to, _clinic_address, _doctor, _type_of_doctor, _user_id
 
-def add_schedule(_user, _date, _clinic, _doctor, type_of_doctor, _user_id):
-    schedule_var = Schedule(_user, _date, _clinic, _doctor, type_of_doctor, _user_id)
+def add_schedule(_patient_name, _scheduled_to, _clinic_address, _doctor, _type_of_doctor, _user_id):
+    schedule_var = Schedule(patient_name = _patient_name, scheduled_to = _scheduled_to, clinic_address = _clinic_address, doctor = _doctor, type_of_doctor = _type_of_doctor, user_id = _user_id)
     db.session.add(schedule_var)
     db.session.commit()
     

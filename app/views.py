@@ -59,14 +59,19 @@ def user():
 
 @views.route('/schedule', methods = ['POST', 'GET'])
 def schedule():
+    
     # return render_template('schedule.html', _user = current_user)
     # add_schedule('vinicios', '29/09/2022', 'sao paulo', 'mario', 'odonto', 1)
     # resposta = add_schedule('vinicios', '29/09/2022', 'sao paulo', 'mario', 'odonto', 1)
     # resposta = add_schedule('vinicios')
-    schedule_var = Schedule('Will', '29/09/2022', 'sao paulo', 'mario', 'odonto', 1)
+
+    # _patient_name, _scheduled_to, _clinic_address, _doctor, _type_of_doctor, _user_id
+
+    schedule_var = Schedule('current_user.name', '29/09/2022', 'sao paulo', 'mario', 'odonto', current_user.id, 1)
     db.session.add(schedule_var)
     resposta = db.session.commit()
     return resposta
+
     # if request.method == 'GET' and current_user.is_authenticated:
     #     return render_template('schedule.html', _user = current_user)
     
