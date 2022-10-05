@@ -67,28 +67,30 @@ def schedule():
 
     # _patient_name, _scheduled_to, _clinic_address, _doctor, _type_of_doctor, _user_id
 
-    schedule_var = Schedule('current_user.name', '29/09/2022', 'sao paulo', 'mario', 'odonto', current_user.id, 1)
-    db.session.add(schedule_var)
-    resposta = db.session.commit()
-    return resposta
+    # schedule_var = Schedule('current_user.name', '29/09/2022', 'sao paulo', 'mario', 'odonto', current_user.id, 1)
+    # db.session.add(schedule_var)
+    # resposta = db.session.commit()
+    # return resposta
 
-    # if request.method == 'GET' and current_user.is_authenticated:
-    #     return render_template('schedule.html', _user = current_user)
+    if request.method == 'GET' and current_user.is_authenticated:
+        return render_template('schedule.html', _user = current_user)
     
-    # if request.method == 'POST' and current_user.is_authenticated:
-    #     _data = request.form['data']
-    #     _hora = request.form['hora']
-    #     _local = request.form['local']
-    #     _especialidade = request.form['especialidade']
-    #     _nome_medico = request.form['medico']
-    #     _data_hora = f'{_data} {_hora}'
-    #     try:
-    #     # add_schedule(_user, _date, _clinic, _doctor, type_of_doctor, _user_id)
-    #         add_schedule(current_user.name, _data, _local, _nome_medico, _especialidade, current_user.user_id)
-    #     except:
-    #         return '''<h1>Erro<h1><a href='user'>Voltar<a/>'''
-    # else:
-    #     return redirect(url_for('views.home'))
+    if request.method == 'POST' and current_user.is_authenticated:
+        _data = request.form['data']
+        _hora = request.form['hora']
+        _local = request.form['local']
+        _especialidade = request.form['especialidade']
+        _nome_medico = request.form['medico']
+        _data_hora = f'{_data} {_hora}'
+
+        add_schedule(current_user.name, _data, _local, _nome_medico, _especialidade, current_user.id)
+        # try:
+        # # add_schedule(_user, _date, _clinic, _doctor, type_of_doctor, _user_id)
+        #     add_schedule(current_user.name, _data, _local, _nome_medico, _especialidade, current_user.user_id)
+        # except:
+        #     return '''<h1>Erro<h1><a href='user'>Voltar<a/>'''
+    else:
+        return redirect(url_for('views.home'))
 
 @views.route('/signout')
 def sigout():
