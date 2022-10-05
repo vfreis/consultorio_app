@@ -31,15 +31,15 @@ class Schedule(db.Model):
 
     # _patient_name, _scheduled_to, _clinic_address, _doctor, _type_of_doctor, _user_id
 
-    def __init__(self, id,patient_name, scheduled_to, clinic_address, doctor, type_of_doctor, user_id):
-        # self.id = id
-        # self.created_at = created_at
-        # self.status = status
-        self.patient_name = patient_name
-        self.scheduled_to = scheduled_to
-        self.clinic_address = clinic_address
-        self.doctor = doctor
-        self.type_of_doctor = type_of_doctor
-        self.user_id = user_id
-        # self.user_id = user_id
+    # def __init__(self, id,patient_name, scheduled_to, clinic_address, doctor, type_of_doctor, user_id):
+    #     self.id = id
+    #     # self.created_at = created_at
+    #     # self.status = status
+    #     self.patient_name = patient_name
+    #     self.scheduled_to = scheduled_to
+    #     self.clinic_address = clinic_address
+    #     self.doctor = doctor
+    #     self.type_of_doctor = type_of_doctor
+    #     self.user_id = user_id
+    #     # self.user_id = user_id
         

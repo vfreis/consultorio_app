@@ -84,6 +84,7 @@ def schedule():
         _data_hora = f'{_data} {_hora}'
 
         add_schedule(current_user.name, _data, _local, _nome_medico, _especialidade, current_user.id)
+        return f'consulta agendada para {current_user.name}, na clinica {_local} com {_nome_medico} no dia {_data}  as {_hora}. <a href="/">Clique aqui</a> para voltar'
         # try:
         # # add_schedule(_user, _date, _clinic, _doctor, type_of_doctor, _user_id)
         #     add_schedule(current_user.name, _data, _local, _nome_medico, _especialidade, current_user.user_id)
