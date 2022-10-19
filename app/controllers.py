@@ -1,3 +1,4 @@
+from sqlalchemy import update
 from .models import Schedule, User
 from flask_login import current_user
 from . import db
