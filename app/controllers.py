@@ -30,6 +30,9 @@ def get_schedules(_user_id):
     schedule_var = Schedule.query.filter_by(user_id = _user_id)
     return schedule_var
 
-
-#teste
+def delete_user(cpf):
+    # User.update().where(User.doc_id == cpf).values(status = 'False')
+    upd = update(User)
+    val = upd.values({'status': 0})
+    cond = val.where(User.id == cpf)
 # add_user('vinicios', 'rua 123', '01/01/2021', 'teste@gmail', '11993408348', '22972425812', '123456')
