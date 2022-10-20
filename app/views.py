@@ -113,5 +113,8 @@ def my_schedule():
 
 @views.route('/editar')
 def editar():
-    return render_template(editar, _user =current_user)
+    upadate_user('4521325661') 
+    return 'ok' 
+    
+    # return render_template(editar, _user =current_user)
 

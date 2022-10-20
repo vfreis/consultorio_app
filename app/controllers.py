@@ -30,6 +30,24 @@ def get_schedules(_user_id):
     schedule_var = Schedule.query.filter_by(user_id = _user_id)
     return schedule_var
 
+def upadate_user(cpf):
+    stmt = (
+    update(user).
+    where(user.c.cpf == cpf).
+    values(status='false')
+)
 
 #teste
 # add_user('vinicios', 'rua 123', '01/01/2021', 'teste@gmail', '11993408348', '22972425812', '123456')
+
+#teste update user
+
+# upadate_user('4521325661')  
+
+
+
+
+# from sqlalchemy import update
+# upd = update(tablename)
+# val = upd.values({"column_name":"value"})
+# cond = val.where(tablename.c.column_name == value)
