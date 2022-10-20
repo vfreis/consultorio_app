@@ -106,3 +106,12 @@ def my_schedule():
         return render_template('my_schedule.html', _user = current_user)
     else:
         return redirect(url_for('views.signin'))
+
+
+
+
+
+@views.route('/editar')
+def editar():
+    return render_template(editar, _user =current_user)
+
