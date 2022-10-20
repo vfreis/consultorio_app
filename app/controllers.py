@@ -30,13 +30,12 @@ def get_schedules(_user_id):
     schedule_var = Schedule.query.filter_by(user_id = _user_id)
     return schedule_var
 
-def upadate_user(cpf):
-
-    stmt = (
-    update(user).
-    where(user.c.cpf == cpf).
-    values(status='false')
-)
+def delete_user(cpf):
+    # User.update().where(User.doc_id == cpf).values(status = 'False')
+    upd = update(User)
+    val = upd.values({'status': 0})
+    cond = val.where(User.doc_id == cpf)
+    db.session.commit ()
 
 # upd = update(tablename)
 # val = upd.values({"column_name":"value"})
