@@ -33,6 +33,25 @@ def get_schedules(_user_id):
 def delete_user(cpf):
     # User.update().where(User.doc_id == cpf).values(status = 'False')
     upd = update(User)
-    val = upd.values({'status': 0})
-    cond = val.where(User.id == cpf)
+    val = upd.values({'status': False})
+    cond = val.where(User.doc_id == cpf)
+    db.session.add(val)
+    db.session.commit()
+    # User.update().where(doc_id = cpf).values(status = False)
 # add_user('vinicios', 'rua 123', '01/01/2021', 'teste@gmail', '11993408348', '22972425812', '123456')
+
+
+#teste
+# add_user('vinicios', 'rua 123', '01/01/2021', 'teste@gmail', '11993408348', '22972425812', '123456')
+
+#teste update user
+
+# upadate_user('4521325661')  
+
+
+
+
+# from sqlalchemy import update
+# upd = update(tablename)
+# val = upd.values({"column_name":"value"})
+# cond = val.where(tablename.c.column_name == value)
