@@ -31,10 +31,9 @@ def get_schedules(_user_id):
     return schedule_var
 
 def delete_user(cpf):
-
     db.session.query(User).filter(User.doc_id == cpf).update({'status': False})
     db.session.commit()
-    return 'cancelado ok'
+    return 'cancelado'
 
 def update_user(nome, dt_nasc_date, email, celular, endereco, sexo, senha):
     db.session.query(User).filter(User.doc_id == current_user.doc_id).update({'name': nome})
