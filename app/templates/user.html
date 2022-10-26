@@ -18,50 +18,53 @@
 <body>
 
 
+  {% extends 'index.html' %}
+  {% block content %}
+
 <div class="span position-relative ">
   <div class="position-absolute top-50 start-50 translate-middle-x">
 
   <div class="card text-bg-light d-flex align-content-center" style="max-width: 50rem;">
-          <div class="card-header text-center">Novo Cadastro</div>
+          <div class="card-header text-center">Meu Cadastro</div>
           <div class="card-body">
             <form class="" action="/signup" method="POST">
                 <div class="input-group mb-3">
                     <span class="input-group-text">Nome</span>
-                    <input id="nome" required name = "nome"type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    <input id="nome" required name = "nome"type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value={{current_user.name}}>
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text">Data da Nascimento</span>
-                    <input id="dt_nasc" required name = "dt_nasc" type="date" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    <input id="dt_nasc" required name = "dt_nasc" type="date" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value={{current_user.birthday}}>
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text">E-mail</span>
-                    <input id="email" required name = "email" type="email" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    <input id="email" required name = "email" type="email" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value={{current_user.email}}>
                 </div>
                 <div class="input-group mb-3">
                   <span class="input-group-text">Endereço</span>
-                  <input id="endereco" required name = "endereco" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                  <input id="endereco" required name = "endereco" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value={{current_user.address}}>
               </div>
                 <div class="input-group mb-3">
                     <lab class="input-group-text">Celular</lab>
-                    <input id="celular" name = "celular" type="phone" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    <input id="celular" name = "celular" type="phone" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value={{current_user.phone}} >
                 </div>
-                <div class="input-group mb-3">
+                <!-- <div class="input-group mb-3">
                     <span class="input-group-text">telefone</span>
-                    <input id="telefone" name = "telefone" type="phone" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                </div>
+                    <input id="telefone" name = "telefone" type="phone" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value={{current_user.phone}}>
+                </div> -->
                 <div class="input-group mb-3">
                     <span class="input-group-text">Sexo</span>
-                    <input id="sexo" required name = "sexo" type="text" class="form-control" aria-label="Sizing example input " aria-describedby="inputGroup-sizing-default">
+                    <input id="sexo" required name = "sexo" type="text" class="form-control" aria-label="Sizing example input " aria-describedby="inputGroup-sizing-default" value={{current_user.sex}}>
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text">CPF</span>
-                    <input id="cpf" required name = "cpf" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    <input id="cpf" required name = "cpf" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value={{current_user.doc_id}} disabled>
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text">Senha</span>
                     <input id="senha" required name = "senha" type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                 </div>
-                <button  type="submit" class="btn btn-primary botaologin">Cadastrar</button>
+                <button  type="submit" class="btn btn-primary botaologin">Alterar</button>
             </form>
       </div>
   </div>
@@ -100,7 +103,7 @@
       </nav> -->
 
 
-
+      {% endblock %}
 
 
       
