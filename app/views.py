@@ -52,10 +52,22 @@ def signup():
     else:
         return render_template('signup.html', _user = current_user)
 
-@views.route('/user', methods = ['GET'])
+@views.route('/user', methods = ['GET', 'POST'])
 @login_required
 def user():
-    return render_template('user.html', _user = current_user)
+    if request.method == 'POST':
+        nome = request.form['nome']
+        dt_nasc_date = request.form['dt_nasc']
+        email = request.form['email']
+        celular = request.form['celular']
+        endereco = request.form['endereco']
+        sexo = request.form['sexo']
+        # cpf = request.form['cpf']
+        senha = request.form['senha']
+        return update_user(nome, dt_nasc_date, email, celular, endereco, sexo, senha)
+    else:
+        return render_template('user.html', _user = current_user)
+
 
 @views.route('/schedule', methods = ['POST', 'GET'])
 def schedule():

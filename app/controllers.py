@@ -36,6 +36,18 @@ def delete_user(cpf):
     db.session.commit()
     return 'cancelado ok'
 
+def update_user(nome, dt_nasc_date, email, celular, endereco, sexo, senha):
+    db.session.query(User).filter(User.doc_id == current_user.doc_id).update({'name': nome})
+    db.session.query(User).filter(User.doc_id == current_user.doc_id).update({'birthday': dt_nasc_date})
+    db.session.query(User).filter(User.doc_id == current_user.doc_id).update({'email': email})
+    db.session.query(User).filter(User.doc_id == current_user.doc_id).update({'phone': celular})
+    db.session.query(User).filter(User.doc_id == current_user.doc_id).update({'address': endereco})
+    db.session.query(User).filter(User.doc_id == current_user.doc_id).update({'sex': sexo})
+    db.session.query(User).filter(User.doc_id == current_user.doc_id).update({'password': senha})
+    db.session.commit()
+    return 'alterado'
+
+
 
     # # User.update().where(User.doc_id == cpf).values(status = 'False')
     # upd = update(User)
