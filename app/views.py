@@ -130,3 +130,29 @@ def editar():
     # return render_template(editar, _user =current_user)
 
 
+# @views.route('/medicos')
+# def medicos():   
+#      return (add_medicos('Thomaz', 'Mas', '001882345', 'dentsta', 'rua 12d3','wamrr@ghl.com', '1023430','0012386', '03774')) 
+
+
+@views.route('/cadastro_medicos', methods = ['GET', 'POST'])
+def medicos():
+
+    if request.method == 'GET' and current_user.is_authenticated : 
+        return redirect(url_for('views.medicos'))
+    
+    elif request.method == 'POST':
+        nome = request.form['nome']
+        sexo = request.form['sexo']
+        crm = request.form['crm']
+        especialidade = request.form['especialidade']
+        endereco = request.form['endereco']
+        email = request.form['email']
+        celular = request.form['celular']
+        cpf = request.form['cpf']
+        senha = request.form['senha']
+        add_medicos(nome,sexo, crm, especialidade, endereco, email, celular, cpf, senha)
+        return f'{nome}, adicionado! <a href="/">Clique aqui</a> para voltar'
+
+    else:
+        return render_template('cadastro_medicos.html', _user = current_user)    

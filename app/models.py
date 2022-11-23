@@ -43,3 +43,17 @@ class Schedule(db.Model):
     #     self.user_id = user_id
     #     # self.user_id = user_id
         
+class Medicos(db.Model, UserMixin):
+    __tablename__ = "medicos"
+    id = db.Column(db.Integer, primary_key = True, autoincrement = True)
+    name = db.Column(db.String(150))
+    sexo = db.Column(db.String(35))
+    crm = db.Column(db.String(20))
+    especialidade = db.Column(db.String(100))
+    endereco = db.Column(db.String(150))
+    email = db.Column(db.String(150), unique = True)
+    celular = db.Column(db.String(150))
+    cpf = db.Column(db.String(150), unique = True)
+    senha = db.Column(db.String(150))
+    created_at = db.Column(db.DateTime(timezone=True), default=func.now())
+    #schedule_at = db.relationship('Schedule') # relation with tbl schedul

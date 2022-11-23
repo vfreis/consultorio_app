@@ -1,5 +1,5 @@
 from sqlalchemy import update
-from .models import Schedule, User
+from .models import Schedule, User, Medicos
 from flask_login import current_user
 from . import db
 
@@ -63,6 +63,17 @@ def update_user(nome, dt_nasc_date, email, celular, endereco, sexo, senha):
 #teste update user
 
 # upadate_user('4521325661')  
+
+
+
+def add_medicos(_name, _sexo, _crm, _especialidade, _endereco, _email, _celular,_cpf, _senha ):
+    medicos_var = Medicos(name = _name, sexo =_sexo, crm = _crm, especialidade = _especialidade,  endereco = _endereco, email = _email, celular = _celular, cpf = _cpf, senha = _senha)
+    db.session.add(medicos_var)
+    db.session.commit()
+
+    # return "ok"
+
+# add_medicos('will', 'M', '12345', 'dentista', 'rua 123','wamralrar@ghl.com', '1234323','1234567786', '1234')   
 
 
 
